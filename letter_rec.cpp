@@ -2,8 +2,8 @@
 #include <time.h>         // For seeding the random number generator
 #include <cmath>
 #include <vector>         // To use vectors for dynamic arrays
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>    // For loading images 3rd party library
+#define STB_IMAGE_IMPLEMENTATION // required or stb_image.h will fail to load
+#include "stb_image.h"    // For loading images 3rd party library
 #include <filesystem>     // To iterate through directories
 #include <string>         
 #include <chrono>         // For measuring the duration of operations
@@ -189,13 +189,13 @@ int main() {
 
     int epoch = 1000;
     for(int i = 0;i < epoch;i++) {
-    for(int j = 0;j < 3;j++) { //limited to learning only 0 and 1 for faster operation
+    for(int number = 0;number < 3;number++) { //limited to learning only 0, 1 and 2 for faster operation
         vector<double> tar;
-        if(j==0) {
+        if(number==0) {
             tar = {1,0,0,0,0,0,0,0,0,0};
-        }else if(j == 1) {
+        }else if(number == 1) {
             tar = {0,1,0,0,0,0,0,0,0,0};
-        }else if(j == 2) {
+        }else if(number == 2) {
             tar = {0,0,1,0,0,0,0,0,0,0};
         }
         auto start = std::chrono::high_resolution_clock::now();
